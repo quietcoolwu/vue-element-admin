@@ -72,6 +72,8 @@ var webpackConfig = merge(baseWebpackConfig, {
             // necessary to consistently work with multiple chunks via CommonsChunkPlugin
             chunksSortMode: 'dependency'
         }),
+        // cache Module Identifiers
+        new webpack.HashedModuleIdsPlugin(),
         // split vendor js into its own file
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
@@ -84,6 +86,14 @@ var webpackConfig = merge(baseWebpackConfig, {
                         path.join(__dirname, '../node_modules')
                     ) === 0
                 )
+            }
+        }),
+        // split echarts into its own file
+        new webpack.optimize.CommonsChunkPlugin({
+            async:'echarts',
+            minChunks(module) {
+                var context = module.context;
+                return context && (context.indexOf('echarts') >= 0 || context.indexOf('zrender') >= 0);
             }
         }),
         // extract webpack runtime and module manifest to its own file in order to

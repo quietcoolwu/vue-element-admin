@@ -1,6 +1,8 @@
+@import './mixin.scss';
 @import './btn.scss';
 @import './element-ui.scss';
-@import "./mixin.scss";
+@import './sidebar.scss';
+
 body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -96,6 +98,7 @@ code {
   opacity: 0;
 }
 
+
 //main-container全局样式
 .app-container {
   padding: 20px;
@@ -108,12 +111,14 @@ code {
   margin-top: 30px;
 }
 
-
 .editor-container .CodeMirror {
   height: 100%!important;
 }
 
-.wscn-icon {
+.text-center{
+  text-align: center
+}
+.svg-icon {
   width: 1em;
   height: 1em;
   vertical-align: -0.15em;
